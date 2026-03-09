@@ -101,6 +101,7 @@ jobs:
       version: ${{ needs.version.outputs.version }}
 
   build-tauri:
+    if: false
     needs:
       - build-cli
       - version
@@ -238,6 +239,7 @@ jobs:
           APPLE_API_KEY_PATH: ${{ runner.temp }}/apple-api-key.p8
 
   build-electron:
+    if: false
     needs:
       - build-cli
       - version
@@ -360,9 +362,9 @@ jobs:
     needs:
       - version
       - build-cli
-      - build-tauri
-      - build-electron
-    runs-on: blacksmith-4vcpu-ubuntu-2404
+      # - build-tauri
+      # - build-electron
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
